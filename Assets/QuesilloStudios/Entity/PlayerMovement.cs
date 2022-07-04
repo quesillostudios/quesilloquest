@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // ! VARIABLES PUBLICAS SE PUEDEN VER EN EL INSPECTOR DE UNITY
     public Animator animator;
     public float speed;
     public float runningSpeed;
     public float rotationSpeed;
+    public float jumpMaxForce;
     public float gravityForce;
-    // ! <--->
 
     private Vector3 _direction;
     private Vector3 _gravityDirection;
@@ -21,22 +20,21 @@ public class PlayerMovement : MonoBehaviour
     private bool _jumpPressed;
     private bool _runningPressed;
 
+    private bool _isJumping;
+
     private CharacterController _characterController;
 
-
-    // ! FLUJO DE UNITY
-    // Start is called before the first frame update
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ReadInputs();
 
         Gravity();
+        Jump();
         Rotate();
         Movement();
     }
@@ -46,13 +44,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsRunning", _direction.z != 0 && _runningPressed);
         animator.SetBool("IsWalking", _direction.z != 0 && !_runningPressed);
     }
-    // ! FIN DE FLUJO DE UNITY
 
     private void ReadInputs()
     {
         _axisX = Input.GetAxis("Horizontal");           // A - D o <- - ->
         _axisZ = Input.GetAxis("Vertical");             // W - S o abajo y arriba
-        _jumpPressed = Input.GetKeyDown(KeyCode.Space);     // TRUE cuando presionemos espacio
+        _jumpPressed = Input.GetKey(KeyCode.Space);     // TRUE cuando presionemos espacio
         _runningPressed = Input.GetKey(KeyCode.LeftShift);
     }
 
@@ -71,7 +68,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void Gravity()
     {
-        _gravityDirection.y = _characterController.isGrounded == true ? 0f : -gravityForce;
-        // ! Azucar sintactico para una pregunta de SI o NO
+        if(_isJumping) return;
+
+         _gravityDirection.y = _characterController.isGrounded == true ? 0f : -gravityForce;
+    }
+
+    private void Jump()
+    {
+        if(_characterController.isGrounded == false || _isJumping == true) return;
+
+        if(_jumpPressed)
+        {
+            _isJumping = true;
+            StartCoroutine(CalculateJumpDistance());
+        }  
+    }
+
+    private IEnumerator CalculateJumpDistance()
+    {
+        float actualJumpDistance = 0f;
+
+        while(actualJumpDistance < jumpMaxForce)
+        {
+            _gravityDirection.y = actualJumpDistance;
+            actualJumpDistance++;
+            yield return new WaitForFixedUpdate();
+        }
+
+        _isJumping = false;
     }
 }
