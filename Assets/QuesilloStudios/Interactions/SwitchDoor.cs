@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using QuesilloStudios.Entity.Player;
 using UnityEngine;
 
-public class SwitchDoor : MonoBehaviour
+namespace QuesilloStudios.Interactions
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private Door[] doors;
-    private bool _isActive;
-
-    private void OnTriggerStay(Collider other) // Lo que entro
+    public class SwitchDoor : MonoBehaviour
     {
-        if (other.gameObject.CompareTag("Player"))
+        [SerializeField] private Animator animator;
+        [SerializeField] private Door[] doors;
+        private bool isActive;
+        private static readonly int Activated = Animator.StringToHash("Activated");
+
+        private void OnTriggerStay(Collider other) // Lo que entro
         {
+            if (!other.gameObject.CompareTag("Player")) return;
             var playerInteraction = other.gameObject.GetComponent<PlayerInteraction>();
 
-            if (playerInteraction == null) // Metodo de seguridad ante la busqueda del componente PlayerInterction
+            if (playerInteraction == null)
             {
                 Debug.LogError("El personaje no contiene el componente PlayerInteraction !!!");
                 return;
@@ -24,16 +25,16 @@ public class SwitchDoor : MonoBehaviour
 
             ActivateSwitch();
         }
-    }
 
-    private void ActivateSwitch()
-    {
-        _isActive = true;
-        animator.SetBool("Actived", _isActive);
-
-        foreach (var door in doors)
+        private void ActivateSwitch()
         {
-            door.MoveTheDoor();
+            isActive = true;
+            animator.SetBool(Activated, isActive);
+
+            foreach (var door in doors)
+            {
+                door.MoveTheDoor();
+            }
         }
     }
 }
