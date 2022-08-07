@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+namespace QuesilloStudios.Entity.Player
 {
-    [SerializeField] private KeyCode interactionKey;
-    private bool _isInteracting;
-    public bool IsInteracting { get => _isInteracting; }
-
-    void Update()
+    public class PlayerInteraction : MonoBehaviour
     {
-        _isInteracting = Input.GetKey(interactionKey);
+        [SerializeField] private KeyCode interactionKey;
+        public bool IsInteracting { get; private set; }
+
+        private void Update()
+        {
+            IsInteracting = Input.GetKey(interactionKey);
+        }
     }
 }

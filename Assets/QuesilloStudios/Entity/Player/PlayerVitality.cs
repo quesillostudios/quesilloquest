@@ -1,41 +1,44 @@
 using System;
 using UnityEngine;
 
-public class PlayerVitality : MonoBehaviour
+namespace QuesilloStudios.Entity.Player
 {
-    private float health;
-    [SerializeField] private float maxHealth;
-    private float energy;
-    [SerializeField] private float maxEnergy;
-
-    public static event Action<float, int> OnHealthChange;
-    public static event Action<float, int> OnEnergyChange;
-
-    public void ChangeHealth(float quantity)
+    public class PlayerVitality : MonoBehaviour
     {
-        health = Mathf.Clamp(health + quantity, 0, maxHealth);
-        float porcentHealth = GetPorcentBase1(health, maxHealth);
+        private float health;
+        [SerializeField] private float maxHealth;
+        private float energy;
+        [SerializeField] private float maxEnergy;
 
-        OnHealthChange?.Invoke(porcentHealth, (int)health);
-    }
+        public static event Action<float, int> OnHealthChange;
+        public static event Action<float, int> OnEnergyChange;
 
-    public void ChangeEnergy(float quantity)
-    {
-        energy = Mathf.Clamp(energy + quantity, 0, maxEnergy);
-        float porcentEnergy = GetPorcentBase1(energy, maxEnergy);
+        public void ChangeHealth(float quantity)
+        {
+            health = Mathf.Clamp(health + quantity, 0, maxHealth);
+            var healthPercent = GetPercentRange1(health, maxHealth);
 
-        OnEnergyChange?.Invoke(porcentEnergy, (int)energy);
-    }
+            OnHealthChange?.Invoke(healthPercent, (int)health);
+        }
 
-    // TODO: Extenderlo en un script de utilidades
-    private float GetPorcentBase1(float actualValue, float maxValue)
-    {
-        return (actualValue * 100 / maxValue) / 100;
-    }
+        public void ChangeEnergy(float quantity)
+        {
+            energy = Mathf.Clamp(energy + quantity, 0, maxEnergy);
+            var energyPercent = GetPercentRange1(energy, maxEnergy);
 
-    private void Start() 
-    {
-        ChangeHealth(float.MaxValue);
-        ChangeEnergy(float.MaxValue);
+            OnEnergyChange?.Invoke(energyPercent, (int)energy);
+        }
+
+        // TODO: Extenderlo en un script de utilidades
+        private static float GetPercentRange1(float actualValue, float maxValue)
+        {
+            return (actualValue * 100 / maxValue) / 100;
+        }
+
+        private void Start() 
+        {
+            ChangeHealth(maxHealth);
+            ChangeEnergy(maxEnergy);
+        }
     }
 }

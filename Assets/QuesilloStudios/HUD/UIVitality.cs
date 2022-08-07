@@ -1,35 +1,39 @@
+using QuesilloStudios.Entity.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class UIVitality : MonoBehaviour
+namespace QuesilloStudios.HUD
 {
-    [SerializeField] private Slider healthSlider;
-    [SerializeField] private TMP_Text healthText;
-    [SerializeField] private Slider energySlider;
-    [SerializeField] private TMP_Text energyText;
-
-    private void ModifyHealthSlider(float porcent, int actualValue)
+    public class UIVitality : MonoBehaviour
     {
-        healthSlider.value = porcent;
-        healthText.text = actualValue.ToString();
-    }
+        [SerializeField] private Slider healthSlider;
+        [SerializeField] private TMP_Text healthText;
+        [SerializeField] private Slider energySlider;
+        [SerializeField] private TMP_Text energyText;
 
-    private void ModifyEnergySlider(float porcent, int actualValue)
-    {
-        energySlider.value = porcent;
-        energyText.text = actualValue.ToString();
-    }
+        private void ModifyHealthSlider(float percent, int actualValue)
+        {
+            healthSlider.value = percent;
+            healthText.text = actualValue.ToString();
+        }
 
-    private void OnEnable() 
-    {
-        PlayerVitality.OnHealthChange += ModifyHealthSlider;
-        PlayerVitality.OnEnergyChange += ModifyEnergySlider;
-    }
+        private void ModifyEnergySlider(float percent, int actualValue)
+        {
+            energySlider.value = percent;
+            energyText.text = actualValue.ToString();
+        }
 
-    private void OnDisable() 
-    {
-        PlayerVitality.OnHealthChange -= ModifyHealthSlider;
-        PlayerVitality.OnEnergyChange -= ModifyEnergySlider;
+        private void OnEnable() 
+        {
+            PlayerVitality.OnHealthChange += ModifyHealthSlider;
+            PlayerVitality.OnEnergyChange += ModifyEnergySlider;
+        }
+
+        private void OnDisable() 
+        {
+            PlayerVitality.OnHealthChange -= ModifyHealthSlider;
+            PlayerVitality.OnEnergyChange -= ModifyEnergySlider;
+        }
     }
 }

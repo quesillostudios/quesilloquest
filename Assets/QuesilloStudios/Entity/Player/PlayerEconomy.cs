@@ -1,51 +1,54 @@
 using System;
 using UnityEngine;
 
-public class PlayerEconomy : MonoBehaviour
+namespace QuesilloStudios.Entity.Player
 {
-    [Serializable]
-    public struct PlayerPocket
+    public class PlayerEconomy : MonoBehaviour
     {
-        public int Gold;
-        public int Silver;
-        public int Bronze;
-    }
-
-    [SerializeField] private PlayerPocket pocket;
-    [SerializeField] private CoinInteractor coinInteractor;
-
-    public static event Action<PlayerPocket> OnCoinModified;
-
-    private void ModifyCoins(CoinType coinType, int quantity)
-    {
-        switch (coinType)
+        [Serializable]
+        public struct PlayerPocket
         {
-            case CoinType.Bronze:
-                pocket.Bronze += quantity;
-                break;
-            case CoinType.Silver:
-                pocket.Silver += quantity;
-                break;     
-            case CoinType.Gold:
-                pocket.Gold += quantity;
-                break;
+            public int gold;
+            public int silver;
+            public int bronze;
         }
 
-        OnCoinModified?.Invoke(pocket);
-    }
+        [SerializeField] private PlayerPocket pocket;
+        [SerializeField] private CoinInteractor coinInteractor;
 
-    private void Start()
-    {
-        OnCoinModified?.Invoke(pocket);
-    }
+        public static event Action<PlayerPocket> OnCoinModified;
 
-    private void OnEnable() 
-    {
-        coinInteractor.OnCoinInteracts += ModifyCoins;
-    }
+        private void ModifyCoins(CoinType coinType, int quantity)
+        {
+            switch (coinType)
+            {
+                case CoinType.Bronze:
+                    pocket.bronze += quantity;
+                    break;
+                case CoinType.Silver:
+                    pocket.silver += quantity;
+                    break;     
+                case CoinType.Gold:
+                    pocket.gold += quantity;
+                    break;
+            }
 
-    private void OnDisable() 
-    {
-        coinInteractor.OnCoinInteracts -= ModifyCoins;
+            OnCoinModified?.Invoke(pocket);
+        }
+
+        private void Start()
+        {
+            OnCoinModified?.Invoke(pocket);
+        }
+
+        private void OnEnable() 
+        {
+            coinInteractor.OnCoinInteracts += ModifyCoins;
+        }
+
+        private void OnDisable() 
+        {
+            coinInteractor.OnCoinInteracts -= ModifyCoins;
+        }
     }
 }
