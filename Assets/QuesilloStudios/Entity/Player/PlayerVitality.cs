@@ -6,8 +6,10 @@ namespace QuesilloStudios.Entity.Player
     public class PlayerVitality : MonoBehaviour
     {
         private float health;
+        public float Health { get => health; }
         [SerializeField] private float maxHealth;
         private float energy;
+        public float Energy { get => energy; }
         [SerializeField] private float maxEnergy;
 
         public static event Action<float, int> OnHealthChange;
