@@ -1,30 +1,32 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
-public class CinemachineDirector : MonoBehaviour
+namespace QuesilloStudios.Camera
 {
-    [SerializeField] private CinemachineVirtualCameraBase[] virtualCams;
-    [SerializeField] private CinemachineVirtualCameraBase defaultVirtualCamera;
-
-    private void Start() 
+    public class CinemachineDirector : MonoBehaviour
     {
-        if (virtualCams.Length != 0)
+        [SerializeField] private CinemachineVirtualCameraBase[] virtualCams;
+        [SerializeField] private CinemachineVirtualCameraBase defaultVirtualCamera;
+
+        private void Start() 
         {
-            defaultVirtualCamera = virtualCams[0];
+            if (virtualCams.Length != 0)
+            {
+                defaultVirtualCamera = virtualCams[0];
+            }
         }
-    }
 
-    public void SwitchToCam(CinemachineVirtualCameraBase camera)
-    {
-        foreach (var virtualCam in virtualCams)
+        public void SwitchToCam(CinemachineVirtualCameraBase virtualCamera)
         {
-            if(virtualCam == camera) virtualCam.Priority = 1;
-            else virtualCam.Priority = 0;
+            foreach (var virtualCam in virtualCams)
+            {
+                virtualCam.Priority = virtualCam == virtualCamera ? 1 : 0;
+            }
         }
-    }
 
-    public CinemachineVirtualCameraBase GetDefaultCamera()
-    {
-        return defaultVirtualCamera;
+        public CinemachineVirtualCameraBase GetDefaultCamera()
+        {
+            return defaultVirtualCamera;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using QuesilloStudios.Economy;
 using UnityEngine;
 
 namespace QuesilloStudios.Entity.Player

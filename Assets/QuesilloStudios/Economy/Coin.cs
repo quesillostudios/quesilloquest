@@ -1,26 +1,30 @@
 using UnityEngine;
-public class Coin : MonoBehaviour
+
+namespace QuesilloStudios.Economy
 {
-    [SerializeField] private CoinType coinType;
-    public CoinType CoinTypeProperty { get => coinType; }
-    [SerializeField] private int quantity;
-    public int QuantityProperty { get => quantity; }
-
-    [SerializeField] private CoinInteractor coinInteractor;
-
-    private void OnTriggerEnter(Collider other) 
+    public class Coin : MonoBehaviour
     {
-        if(other.gameObject.CompareTag("Player"))
+        [SerializeField] private CoinType coinType;
+        public CoinType CoinTypeProperty { get => coinType; }
+        [SerializeField] private int quantity;
+        public int QuantityProperty { get => quantity; }
+
+        [SerializeField] private CoinInteractor coinInteractor;
+
+        private void OnTriggerEnter(Collider other) 
         {
-            coinInteractor.OnCoinInteracts.Invoke(CoinTypeProperty, QuantityProperty);
-            gameObject.SetActive(false); // Destroy(this);
+            if(other.gameObject.CompareTag("Player"))
+            {
+                coinInteractor.OnCoinInteracts.Invoke(CoinTypeProperty, QuantityProperty);
+                gameObject.SetActive(false); // Destroy(this);
+            }
         }
     }
-}
 
-public enum CoinType
-{
-    Bronze,
-    Silver,
-    Gold
+    public enum CoinType
+    {
+        Bronze,
+        Silver,
+        Gold
+    }
 }

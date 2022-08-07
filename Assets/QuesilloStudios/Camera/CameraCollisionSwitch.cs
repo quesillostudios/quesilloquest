@@ -1,29 +1,32 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
-public class CameraCollisionSwitch : MonoBehaviour
+namespace QuesilloStudios.Camera
 {
-    [SerializeField] private CinemachineDirector cinemachineDirector;
-    [SerializeField] private CinemachineVirtualCameraBase cameraTrigger;
-
-    private static int areaMultiply;
-    private static bool isInArea;
-
-    private void OnTriggerEnter(Collider other) 
+    public class CameraCollisionSwitch : MonoBehaviour
     {
-        isInArea = true;
-        areaMultiply++;
-        cinemachineDirector.SwitchToCam(cameraTrigger);
-    }
+        [SerializeField] private CinemachineDirector cinemachineDirector;
+        [SerializeField] private CinemachineVirtualCameraBase cameraTrigger;
 
-    private void OnTriggerExit(Collider other) 
-    {
-        if (isInArea == false || areaMultiply <= 1)
+        private static int areaMultiply;
+        private static bool isInArea;
+
+        private void OnTriggerEnter(Collider other) 
         {
-            areaMultiply = 0;
-            cinemachineDirector.SwitchToCam(cinemachineDirector.GetDefaultCamera());
+            isInArea = true;
+            areaMultiply++;
+            cinemachineDirector.SwitchToCam(cameraTrigger);
         }
 
-        isInArea = false;
+        private void OnTriggerExit(Collider other) 
+        {
+            if (isInArea == false || areaMultiply <= 1)
+            {
+                areaMultiply = 0;
+                cinemachineDirector.SwitchToCam(cinemachineDirector.GetDefaultCamera());
+            }
+
+            isInArea = false;
+        }
     }
 }
