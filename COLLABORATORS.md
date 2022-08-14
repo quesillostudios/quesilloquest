@@ -1,5 +1,6 @@
 # COLLABORATORS 🤝
 
-David "Aesthezel" Pino => @aesthezel
-
-Jesus "jesalt" Saltos
+- David "Aesthezel" Pino => @aesthezel
+- Jorge "Yotecatl" =>@Yotecatl
+- Fernando "perfecto e inmaculado" Hernández => @yametekds
+- Jesus "jesalt" Saltos
