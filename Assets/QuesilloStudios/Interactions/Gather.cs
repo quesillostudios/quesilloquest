@@ -33,11 +33,11 @@ namespace QuesilloStudios.Interactions
 
         private void DoGathering(PlayerVitality playerVitality)
         {
-            if (isGathering || actualCapacity == 0 || playerVitality.Energy < energyToConsume) return;
-
-            playerVitality.ChangeEnergy(-energyToConsume);
+            if (isGathering || actualCapacity <= 0 || playerVitality.Energy < energyToConsume) return;
 
             isGathering = true;
+            playerVitality.ChangeEnergy(-energyToConsume);
+
             StartCoroutine(Gathering());
         }
 
@@ -62,7 +62,7 @@ namespace QuesilloStudios.Interactions
             actualCapacity = Mathf.Clamp(actualCapacity + quantity, default, maxCapacity);
             capacityText.text = $"{actualCapacity.ToString()} / {maxCapacity.ToString()}";
 
-            if (actualCapacity == 0) gameObject.SetActive(false);
+            if (actualCapacity <= 0) gameObject.SetActive(false);
         }
 
         private void Start() 
