@@ -2,7 +2,7 @@
 
 namespace QuesilloStudios
 {
-    [CreateAssetMenu(fileName = "Mechant", menuName = "QuesilloQuest/Store/Merchant", order = 0)]
+    [CreateAssetMenu(fileName = "Merchant", menuName = "QuesilloQuest/Store/Merchant", order = 0)]
     public class MerchantData : ScriptableObject
     {
         [field: SerializeField]
