@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace QuesilloStudios.HUD
+namespace QuesilloStudios.UI.HUD
 {
     public class UIVitality : MonoBehaviour
     {

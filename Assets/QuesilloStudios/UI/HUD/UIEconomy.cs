@@ -2,7 +2,7 @@ using QuesilloStudios.Entity.Player;
 using TMPro;
 using UnityEngine;
 
-namespace QuesilloStudios.HUD
+namespace QuesilloStudios.UI.HUD
 {
     public class UIEconomy : MonoBehaviour
     {
