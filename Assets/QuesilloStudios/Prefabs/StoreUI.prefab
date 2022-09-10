@@ -683,13 +683,14 @@ GameObject:
   - component: {fileID: 1583829839360270114}
   - component: {fileID: 1583829839360270113}
   - component: {fileID: 238989450}
+  - component: {fileID: 674260843}
   m_Layer: 5
   m_Name: StoreWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1583829839360270112
 RectTransform:
   m_ObjectHideFlags: 0
@@ -784,6 +785,18 @@ MonoBehaviour:
   - {fileID: 2790732688748690207}
   - {fileID: 2790732688932081607}
   storeTitle: {fileID: 1583829838857857125}
+--- !u!225 &674260843
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583829839360270143}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1583829839439405780
 GameObject:
   m_ObjectHideFlags: 0
