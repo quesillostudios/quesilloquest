@@ -36,6 +36,17 @@ namespace QuesilloStudios.Entity.Player
 
             OnCoinModified?.Invoke(pocket);
         }
+        
+        public int GetCoinBalance(CoinType coinType)
+        {
+            return coinType switch
+            {
+                CoinType.Bronze => pocket.bronze,
+                CoinType.Silver => pocket.silver,
+                CoinType.Gold => pocket.gold,
+                _ => 0
+            };
+        }
 
         private void Start()
         {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace QuesilloStudios
 {
@@ -7,8 +8,28 @@ namespace QuesilloStudios
     {
         [field: SerializeField]
         public string Name { get; private set; }
+
+        [SerializeField] 
+        private StoreItem[] items;
+
+        public List<StoreItem> ItemsToSold { get; } = new List<StoreItem>();
+
+        public void Initialize()
+        {
+            foreach (var item in items)
+            {
+                ItemsToSold.Add(Instantiate(item));
+            }
+        }
         
-        [field: SerializeField]
-        public StoreItem[] Items { get; private set; }
+        public void SellItem(StoreItem item)
+        {
+            ItemsToSold.Remove(item);
+
+            foreach (var itemAvailable in ItemsToSold)
+            {
+                Debug.Log(itemAvailable.Name);
+            }
+        }
     }
 }
