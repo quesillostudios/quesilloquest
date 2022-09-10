@@ -10,24 +10,27 @@ namespace QuesilloStudios
     {
         [SerializeField] private MerchantData merchantData;
         [SerializeField] private Store windowStore;
-        private bool _isStoreOpen;
+
+        private void Start()
+        {
+            merchantData.Initialize();
+        }
+
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 if (other.GetComponent<PlayerInteraction>().IsInteracting)
                 {
-                    _isStoreOpen = windowStore.gameObject.activeInHierarchy;
-
-                    if (!_isStoreOpen) OpenStore();
+                    var playerEconomy = other.GetComponent<PlayerEconomy>();
+                    if (!windowStore.IsStoreOpen) OpenStore(playerEconomy);
                 }
             }
         }
 
-        private void OpenStore()
+        private void OpenStore(PlayerEconomy playerEconomy)
         {
-            windowStore.gameObject.SetActive(true);
-            windowStore.PopulateStore(merchantData);
+            windowStore.PopulateStore(merchantData, playerEconomy);
         }
     }
 }

@@ -230,7 +230,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &866911062
 PrefabInstance:
@@ -241,11 +241,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 183298, guid: 0a5c236a7b8473c4db6e870cfe814a12, type: 3}
       propertyPath: m_Name
-      value: Character_Female_Gypsy_01
+      value: Morgana
       objectReference: {fileID: 0}
     - target: {fileID: 464540, guid: 0a5c236a7b8473c4db6e870cfe814a12, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 464540, guid: 0a5c236a7b8473c4db6e870cfe814a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -460,10 +460,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasHUD
       objectReference: {fileID: 0}
-    - target: {fileID: 743116157264109391, guid: 9eb0ff3e6cc4f3848bb4d94e0805e1b0, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 743116157264109392, guid: 9eb0ff3e6cc4f3848bb4d94e0805e1b0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -474,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 743116157264109392, guid: 9eb0ff3e6cc4f3848bb4d94e0805e1b0, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 743116157264109392, guid: 9eb0ff3e6cc4f3848bb4d94e0805e1b0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -666,7 +662,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1664960470
 PrefabInstance:
@@ -677,11 +673,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 183298, guid: 0a5c236a7b8473c4db6e870cfe814a12, type: 3}
       propertyPath: m_Name
-      value: Character_Female_Gypsy_01 (1)
+      value: Melissa
       objectReference: {fileID: 0}
     - target: {fileID: 464540, guid: 0a5c236a7b8473c4db6e870cfe814a12, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 464540, guid: 0a5c236a7b8473c4db6e870cfe814a12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -764,6 +760,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 646217499, guid: 61d4ba817b7378b4aae64e342eb84fec, type: 3}
+      propertyPath: pocket.bronze
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 646217499, guid: 61d4ba817b7378b4aae64e342eb84fec, type: 3}
+      propertyPath: pocket.silver
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7419636160731212102, guid: 61d4ba817b7378b4aae64e342eb84fec, type: 3}
       propertyPath: m_Name
       value: Player
@@ -863,6 +867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 674260843, guid: da3d7564b86ce3f469d3c24030d7a205, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1583829839015564083, guid: da3d7564b86ce3f469d3c24030d7a205, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -873,7 +881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1583829839015564083, guid: da3d7564b86ce3f469d3c24030d7a205, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1583829839015564083, guid: da3d7564b86ce3f469d3c24030d7a205, type: 3}
       propertyPath: m_AnchorMax.x
