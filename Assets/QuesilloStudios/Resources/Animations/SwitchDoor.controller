@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Actived
+    m_ConditionEvent: Activated
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3836938004375684789}
@@ -85,7 +85,7 @@ AnimatorController:
   m_Name: SwitchDoor
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Actived
+  - m_Name: Activated
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
